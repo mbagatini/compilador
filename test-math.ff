@@ -1,0 +1,5 @@
+console(4)
+console(2 + 2 * 3 - 4)
+console(567 / 8 % 9)
+
+// result: 4, 4 and 7
