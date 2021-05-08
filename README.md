@@ -35,3 +35,13 @@ console(2 + 2) // result 4
 
 #### 7. Executar o arquivo teste (compilado)
 `java Test`
+
+#### Todos comandos
+```
+java -jar antlr-4.5.3.jar FF.g
+javac -cp antlr-4.5.3.jar FF*.java
+java -cp antlr-4.5.3.jar:. FFParser < test.ff > Test.j
+java -jar jasmin-2.4.jar Test.j
+java Test
+```
+
