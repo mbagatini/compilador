@@ -1,0 +1,13 @@
+// testes
+x = 3
+console(x * 5)
+y = x / 2
+console(4 + x * (3 - y))
+x = 6
+console(x)
+
+// error
+console(a)
+
+// warning
+b = 88
