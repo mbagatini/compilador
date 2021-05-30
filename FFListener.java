@@ -69,6 +69,36 @@ public interface FFListener extends ParseTreeListener {
 	 */
 	void exitSt_if(FFParser.St_ifContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link FFParser#st_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterSt_while(FFParser.St_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FFParser#st_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitSt_while(FFParser.St_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FFParser#st_break}.
+	 * @param ctx the parse tree
+	 */
+	void enterSt_break(FFParser.St_breakContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FFParser#st_break}.
+	 * @param ctx the parse tree
+	 */
+	void exitSt_break(FFParser.St_breakContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link FFParser#st_continue}.
+	 * @param ctx the parse tree
+	 */
+	void enterSt_continue(FFParser.St_continueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link FFParser#st_continue}.
+	 * @param ctx the parse tree
+	 */
+	void exitSt_continue(FFParser.St_continueContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link FFParser#comparison}.
 	 * @param ctx the parse tree
 	 */

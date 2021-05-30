@@ -1,3 +1,11 @@
+console("Compilador Flip Flop")
+
+//
+// Operações matemáticas
+//
+console("---")
+console("- Operações matemáticas")
+
 // testes
 x = 3
 console(x * 5)
@@ -7,7 +15,90 @@ x = 6
 console(x)
 
 // error
-console(a)
+// console(a)
 
 // warning
-b = 88
+// b = 88
+
+console("---")
+
+//
+// if
+//
+console("- IF")
+x = 1
+y = 2
+
+if (x == y) {
+    console("igual")
+}
+if (x != y) {
+    console("diferente")
+}
+
+x = 2
+if (x < y) {
+    console("menor")
+}
+if (x <= y) {
+    console("menor igual")
+}
+
+y = 1
+if (x > y) {
+    console("maior")
+}
+if (x >= y) {
+    console("maior igual")
+}
+
+console("")
+
+x = 1
+y = 2
+z = 3
+if (x != y) {
+    if (x < y) {
+        if (y > z) {
+            console(1)
+        }
+        if (y <= z) {
+            console(2)
+        }
+    }
+    if (x >= y) {
+        console(3)
+    }
+}
+
+console("---")
+
+//
+// while
+//
+console("- WHILE")
+
+// error
+// break
+
+x = 0
+while (x <= 5) {
+    console("x é ", x)
+    x = x + 1
+	// break
+}
+
+console("")
+
+x = 10
+while (x > 3) {
+	if (x == 8) {
+		x = x - 1
+		continue
+	}
+
+    console("x é ", x)
+    x = x - 1
+}
+
+console("---")

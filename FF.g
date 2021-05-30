@@ -11,9 +11,11 @@ grammar FF;
 	private static ArrayList<String> symbol_table;
 	private static ArrayList<Boolean> symbol_table_warning;
 	private static ArrayList<Character> type_table;
+	private static ArrayList<Integer> while_stack;
 	private static String argments;
 	private static String compare_op;	
 	private static int if_counter;
+	private static int while_counter;
 	private static char ret;
 
 	private static void emit(String bytecode, int delta) 
@@ -33,8 +35,11 @@ grammar FF;
 		symbol_table = new ArrayList<String>();
         symbol_table_warning = new ArrayList<Boolean>();
         type_table = new ArrayList<Character>();
+        while_stack = new ArrayList<Integer>();
 
 		if_counter = 0;
+        while_counter = 0;
+
 		argments = "";
 		ret = 'V';
 		
@@ -72,6 +77,9 @@ CONSOLE: 'console';
 FUNCTION: 'function';
 IF: 'if';
 ELSE: 'else';
+WHILE: 'while';
+CONTINUE: 'continue';
+BREAK: 'break';
 
 NUMBER: '0' ..'9'+;
 STRING: '"' ~["]* '"';
@@ -125,7 +133,7 @@ main:
 
     };
 
-statement: st_console | st_attrib | st_if;
+statement: st_console | st_attrib | st_if | st_while | st_break | st_continue;
 
 st_console:   
 	CONSOLE OP_PAR 
@@ -233,6 +241,51 @@ st_if:
             emit("END_ELSE_"+if_local+":", 0);
         } else {
             emit("NOT_IF_"+if_local+":", 0);
+        }
+    }	
+;
+
+st_while:  
+	WHILE  
+    {  
+        int while_local = while_counter++;
+        emit("BEGIN_WHILE_" + while_local + ":", 0);
+        while_stack.add(while_local);
+    }
+    OP_PAR comparison CL_PAR 
+    {  
+        emit(compare_op + " END_WHILE_" + while_local, -2);
+    }
+    OP_CUR ( statement ) * CL_CUR
+    { 
+        emit("goto BEGIN_WHILE_" + while_local, 0);
+    }
+    {  
+        emit("END_WHILE_" + while_local + ":", 0); 
+        while_stack.remove(while_stack.size()-1);
+    }
+;
+
+st_break: 
+	BREAK
+    {  
+        if (while_stack.size() != 0)
+		{
+            emit("goto END_WHILE_" + while_stack.get(while_stack.size() - 1), 0); 
+        } else {
+            error_list.add("ERROR: break outside a while!");
+        }
+    }
+;
+
+st_continue:
+    CONTINUE
+    {  
+        if (while_stack.size() != 0)
+		{
+            emit("goto BEGIN_WHILE_" + while_stack.get(while_stack.size() - 1), 0); 
+        } else {
+            error_list.add("ERROR: continue outside a while!");
         }
     }
 ;
