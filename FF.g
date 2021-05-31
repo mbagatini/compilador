@@ -81,6 +81,9 @@ WHILE: 'while';
 CONTINUE: 'continue';
 BREAK: 'break';
 
+READ_INT: 'readInt';
+READ_STRING: 'readString' ;
+
 NUMBER: '0' ..'9'+;
 STRING: '"' ~["]* '"';
 VARIABLE: 'a' ..'z'+;
@@ -466,4 +469,15 @@ factor returns [char type]:
 				$type = 'i';
 			}
 		}
+
+	| READ_INT OP_PAR CL_PAR
+		{	
+			emit("invokestatic Runtime/readInt()I", +1); $type = 'i'; 
+		}
+
+	| READ_STRING OP_PAR CL_PAR
+		{	
+			emit("invokestatic Runtime/readString()Ljava/lang/String;", +1); $type = 'a'; 
+		}
+		
 ;
