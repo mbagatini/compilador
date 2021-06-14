@@ -350,10 +350,6 @@
     invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
 
     getstatic java/lang/System/out Ljava/io/PrintStream;
-    iload 1
-    invokevirtual java/io/PrintStream/print(I)V
-
-    getstatic java/lang/System/out Ljava/io/PrintStream;
     invokevirtual java/io/PrintStream/println()V
     iload 1
     ldc 1
@@ -374,9 +370,95 @@
 
     getstatic java/lang/System/out Ljava/io/PrintStream;
     invokevirtual java/io/PrintStream/println()V
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc "- readInt"
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
+    invokestatic Runtime/readInt()I
+
+; --- cheguei aqui --- 
+
+; types size: 4
+
+; symbols size: 4
+    istore 1
+
+    invokestatic Runtime/readInt()I
+
+; --- cheguei aqui --- 
+
+; types size: 4
+
+; symbols size: 4
+    istore 2
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc "soma = "
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    iload 1
+    iload 2
+    iadd
+    invokevirtual java/io/PrintStream/print(I)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc "---"
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc "- readString"
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
+    invokestatic Runtime/readString()Ljava/lang/String;
+
+; --- cheguei aqui --- 
+
+; types size: 4
+
+; symbols size: 4
+    astore 4
+
+    invokestatic Runtime/readString()Ljava/lang/String;
+
+; --- cheguei aqui --- 
+
+; types size: 5
+
+; symbols size: 5
+    astore 5
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    aload 4
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc " e "
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    aload 5
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    ldc "---"
+    invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+
+    getstatic java/lang/System/out Ljava/io/PrintStream;
+    invokevirtual java/io/PrintStream/println()V
     return
 .limit stack 10
-.limit locals 4
+.limit locals 6
 .end method
 
-; symbols: [args, x, y, z]
+; symbols: [args, x, y, z, a, b]

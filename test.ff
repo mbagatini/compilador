@@ -102,3 +102,28 @@ while (x > 3) {
 }
 
 console("---")
+
+//
+// Read int
+//
+console("- readInt")
+
+x = readInt()
+y = readInt()
+console("soma = ", x + y)
+
+console("---")
+
+//
+// Read string
+//
+console("- readString")
+
+// error
+// x = readString()
+
+a = readString()
+b = readString()
+console(a, " e ", b)
+
+console("---")
